@@ -124,11 +124,7 @@ class Bases
 	{};
 	class bases_getHashmap
 	{};
-	class bases_getInfantryClasses
-	{};
 	class bases_getPropertyValue
-	{};
-	class bases_getSide
 	{};
 	class bases_initAmbientAnimFromClass
 	{};
@@ -281,6 +277,8 @@ class Loadouts
 	class assignUnitLoadout
 	{};
 	class randomGear
+	{};
+	class randomGearFromConfig
 	{};
 	class randomLoadout
 	{};
