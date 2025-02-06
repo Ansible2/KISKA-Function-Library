@@ -21,13 +21,8 @@
     id: String - item ID as returned by BIS_fnc_addCommMenuItem function
 */
 
-/*
-	if a class is to be solely a base one, you need to include _baseClass (EXACTLY AS IT IS CASE SENSITIVE)
-	 somewhere in the class name so that it can be excluded from being added to the shop
-*/
-
 /* ----------------------------------------------------------------------------
-	Base Classes
+    Base Classes
 ---------------------------------------------------------------------------- */
 class KISKA_basicSupport_baseClass
 {
@@ -100,8 +95,30 @@ class KISKA_CAS_baseClass : KISKA_basicSupport_baseClass
     EXPRESSION_CALL_MASTER(KISKA_CAS_baseClass)
 };
 
+// TODO: implement configuration
+// TODO: add to calling for support master function
+// TODO: add command menu handler function
+
+class KISKA_detailedCloseAirSupport_baseClass : KISKA_basicSupport_baseClass
+{
+    supportTypeId = SUPPORT_TYPE_CLOSE_AIR_SUPPORT_DETAILED;
+
+    icon = CAS_ICON;
+
+    // class names for any vehicle that the player can select from
+    vehicleTypes[] = {
+        "B_Plane_CAS_01_dynamicLoadout_F"
+    };
+
+    EXPRESSION_CALL_MASTER(KISKA_detailedCloseAirSupport_baseClass)
+};
+
+
+
+
+
 /* ----------------------------------------------------------------------------
-	Heli CAS
+    Heli CAS
 ---------------------------------------------------------------------------- */
 class KISKA_attackHelicopterCAS_baseClass : KISKA_basicSupport_baseClass
 {
@@ -140,7 +157,7 @@ class KISKA_helicopterCAS_baseClass : KISKA_basicSupport_baseClass
 };
 
 /* ----------------------------------------------------------------------------
-	Supplies
+    Supplies
 ---------------------------------------------------------------------------- */
 class KISKA_arsenalSupplyDrop_baseClass : KISKA_basicSupport_baseClass
 {
@@ -178,7 +195,7 @@ class KISKA_supplyDrop_aircraft_baseClass : KISKA_basicSupport_baseClass
 
 
 /* ----------------------------------------------------------------------------
-	(Fixed-Wing) CAS Templates
+    (Fixed-Wing) CAS Templates
 ---------------------------------------------------------------------------- */
 /*
 // adding custom ammos for attack:
@@ -253,7 +270,7 @@ class KISKA_CAS_napalm_templateClass : KISKA_CAS_baseClass
 };
 
 /* ----------------------------------------------------------------------------
-	Atillery Templates
+    Atillery Templates
 ---------------------------------------------------------------------------- */
 class KISKA_ARTY_155_templateClass : KISKA_artillery_baseClass
 {

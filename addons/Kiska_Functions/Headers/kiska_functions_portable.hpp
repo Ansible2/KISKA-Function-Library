@@ -486,6 +486,12 @@ class Supports
     {};
     class CASAttack
     {};
+    class closeAirSupport
+    {};
+    class closeAirSupport_fire
+    {};
+    class closeAirSupport_parseFireOrders
+    {};
     class cruiseMissileStrike
     {};
     class helicopterGunner

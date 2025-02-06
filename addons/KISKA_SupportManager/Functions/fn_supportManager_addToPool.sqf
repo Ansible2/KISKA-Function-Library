@@ -6,8 +6,11 @@ Description:
     Adds an entry into the local support manager pool.
 
 Parameters:
-    0: _entryToAdd <STRING or ARRAY> - The support class or [support class,uses left]
-    1: _bypassChecks <BOOL> - Decides whether or not to perform checks on _entryToAdd for errors
+    0: _entryToAdd <STRING or [STRING,NUMBER]> - The support classname 
+        or the support class name and how many uses it has left 
+        ([support class, number of uses left])
+    1: _bypassChecks <BOOL> - Decides whether or not to perform checks on `_entryToAdd` 
+        for errors
 
 Returns:
     NOTHING
@@ -31,7 +34,7 @@ params [
 
 private _exit = false;
 if !(_bypassChecks) then {
-    if (_entryToAdd isEqualTo "" OR {_entryToAdd isEqualTo []}) exitWith {
+    if ((_entryToAdd isEqualTo "") OR {_entryToAdd isEqualTo []}) exitWith {
         ["_entryToAdd is empty!",true] call KISKA_fnc_log;
         _exit = true;
     };

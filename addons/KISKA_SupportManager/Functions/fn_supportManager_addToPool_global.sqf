@@ -7,7 +7,9 @@ Description:
     THIS FUNCTION HAS A GLOBAL EFFECT
 
 Parameters:
-    0: _entryToAdd <STRING or ARRAY> - The support class or [support class,uses left]
+    0: _entryToAdd <STRING or [STRING,NUMBER]> - The support classname 
+        or the support class name and how many uses it has left 
+        ([support class, number of uses left])
 
 Returns:
     NOTHING
