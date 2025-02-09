@@ -7,6 +7,7 @@
 #define SAVE_MENU missionNamespace setVariable [_menuName,_menuArray];
 #define SAVE_AND_RETURN SAVE_MENU _menuArray
 #define UNLOAD_GLOBALS (_thisArgs select 3) apply {missionNamespace setVariable [_x,nil]};
+#define WITH_USER(GVAR) "#USER:" + GVAR
 #define SAVE_AND_PUSH(GVAR,MENU_ARRAY) \
 	missionNamespace setVariable [GVAR,MENU_ARRAY]; \
 	_menuVariables pushBack GVAR; \
@@ -20,10 +21,7 @@
 #define BEARING_LINE(BEARING, DIR, KEY) STD_LINE((str BEARING) + DIR,KEY,PUSHBACK_AND_PROCEED(BEARING))
 
 
-#define WITH_USER(GVAR) "#USER:" + GVAR
-#define TO_STRING(STRING) #STRING
-
-#define ADD_SUPPORT_BACK(COUNT) [(_thisArgs select 1) select 0,_thisArgs select 0,nil,COUNT,""] call KISKA_fnc_addCommMenuItem;
+#define ADD_SUPPORT_BACK(COUNT) [_thisArgs select 0,COUNT] call KISKA_fnc_commMenu_addSupport;
 #define MAX_KEYS 9
 
 #define BEARING_MENU \

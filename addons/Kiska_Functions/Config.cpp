@@ -26,7 +26,7 @@ class CfgSounds
 
 class CfgCommunicationMenu
 {
-    #include "Headers\Support Framework\basic supports.hpp"
+    #include "Headers\Support Framework\basic comm menu supports.hpp"
 };
 
 class KISKA_eventHandlers

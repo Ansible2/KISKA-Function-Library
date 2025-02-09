@@ -6,15 +6,23 @@ Description:
     Adds an entry into the local support manager pool.
 
 Parameters:
-    0: _entryToAdd <STRING or ARRAY> - The support class or [support class,uses left]
-    1: _bypassChecks <BOOL> - Decides whether or not to perform checks on _entryToAdd for errors
-
+    0: _supportConfig <CONFIG | STRING> - The config as defined in the `CfgCommunicationMenu`
+        or a string of a class that is in a `CfgCommunicationMenu` in either the 
+        `missionConfigFile`, `campaignConfigFile`, or `configFile`.
+    1: _numberOfUsesLeft <NUMBER> - Default: `-1` - The number of support uses left or rounds
+        available to use. If less than 0, the configed value will be used.
 Returns:
     NOTHING
 
 Examples:
     (begin example)
-        ["someClass"] call KISKA_fnc_supportManager_addToPool;
+        ["someClassInCfgCommunicationMenu"] call KISKA_fnc_supportManager_addToPool;
+    (end)
+
+    (begin example)
+        [
+            configFile >> "CfgCommunicationMenu" >> "MySupport"
+        ] call KISKA_fnc_supportManager_addToPool;
     (end)
 
 Authors:
@@ -22,46 +30,24 @@ Authors:
 ---------------------------------------------------------------------------- */
 scriptName "KISKA_fnc_supportManager_addToPool";
 
+#define STORE_ID "kiska-support-manager"
+
 if !(hasInterface) exitWith {};
 
 params [
-    ["_entryToAdd","",["",[]]],
-    ["_bypassChecks",false]
+    ["_supportConfig",configNull,[configNull,""]],
+    ["_numberOfUsesLeft",-1,[123]]
 ];
 
-private _exit = false;
-if !(_bypassChecks) then {
-    if (_entryToAdd isEqualTo "" OR {_entryToAdd isEqualTo []}) exitWith {
-        ["_entryToAdd is empty!",true] call KISKA_fnc_log;
-        _exit = true;
-    };
-
-    // verify class is defined
-    private "_class";
-    if (_entryToAdd isEqualType []) then {
-        _class = _entryToAdd select 0;
-    } else {
-        _class = _entryToAdd;
-    };
-
-    private _config = [["CfgCommunicationMenu",_class]] call KISKA_fnc_findConfigAny;
-    if (isNull _config) exitWith {
-        [[_class," is not defined in any CfgCommunicationMenu!"],true] call KISKA_fnc_log;
-        _exit = true;
-    };
+if (_supportConfig isEqualType "") then {
+    _supportConfig = [["CfgCommunicationMenu",_supportConfig]] call KISKA_fnc_findConfigAny;
+};
+if (isNull _supportConfig) exitWith {
+    ["Could not find _supportConfig",true] call KISKA_fnc_log;
+    nil
 };
 
-if (_exit) exitWith {};
-
-
-private _supportArray = GET_SM_POOL;
-_supportArray pushBack _entryToAdd;
-if (isNil SM_POOL_VAR_STR) then {
-    missionNamespace setVariable [SM_POOL_VAR_STR,_supportArray];
-};
-
-call KISKA_fnc_supportManager_updateCurrentList;
-call KISKA_fnc_supportManager_updatePoolList;
+[STORE_ID,[_supportConfig,_numberOfUsesLeft]] call KISKA_fnc_simpleStore_addItemToPool;
 
 
 nil

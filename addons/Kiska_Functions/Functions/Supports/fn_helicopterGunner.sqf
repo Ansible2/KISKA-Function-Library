@@ -452,7 +452,7 @@ _params spawn {
     /* ----------------------------------------------------------------------------
         After support is done
     ---------------------------------------------------------------------------- */
-    //[TYPE_CAS_ABORT,_heliCrew select 0,_side] call KISKA_fnc_supportRadio;
+    //["cas abort",_heliCrew select 0,_side] call KISKA_fnc_supports_genericRadioMessage;
 
     // remove speed limit
     _heli limitSpeed 99999;

@@ -60,7 +60,6 @@ _spawnPosition vectorAdd [0,0,_flyInHeight];
 
 private _relativeDirection = _spawnPosition getDir _dropPosition;
 
-// spawn vehicle
 private _pilotClass = getText(configFile >> "CfgVehicles" >> _vehicleClass >> "Crew");
 private _vehicleArray = [
     _spawnPosition,

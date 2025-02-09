@@ -1,12 +1,11 @@
-#include "..\Headers\Support Manager Common Defines.hpp"
 /* ----------------------------------------------------------------------------
 Function: KISKA_fnc_supportManager_removeFromPool
 
 Description:
-    Removes the provided index from the pool.
+    Removes the provided index from the trait support manager pool.
 
 Parameters:
-    0: _index <NUMBER> - The selected index
+    0: _index <NUMBER> - The index of the item in the pool array to remove.
 
 Returns:
     NOTHING
@@ -21,16 +20,15 @@ Authors:
 ---------------------------------------------------------------------------- */
 scriptName "KISKA_fnc_supportManager_removeFromPool";
 
-if (!hasInterface) exitWith {};
+#define STORE_ID "kiska-support-manager"
 
-params ["_index"];
+if !(hasInterface) exitWith {};
 
-private _array = GET_SM_POOL;
-if (_array isNotEqualTo []) then {
-    _array deleteAt _index;
-};
+params [
+    ["_index",0,[123]]
+];
 
-call KISKA_fnc_supportManager_updateCurrentList;
-call KISKA_fnc_supportManager_updatePoolList;
+private _items = [STORE_ID,_index] call KISKA_fnc_simpleStore_removeItemFromPool;
+
 
 nil

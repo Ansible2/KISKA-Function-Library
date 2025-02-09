@@ -498,47 +498,55 @@ class Supports
     {};
     class virtualArty
     {};
+    class updateFlareEffects
+    {};
 };
-class SupportFramework
+class CommandMenuSupportCaller
 {
-    file = __EVAL(KISKA_FUNCTIONS_ROOT_FOLDER + "\Functions\Support Framework");
-    class addCommMenuItem
+    file = __EVAL(KISKA_FUNCTIONS_ROOT_FOLDER + "\Functions\Support Framework\Command Menu Support Caller");
+    class commMenu_addSupport
     {};
-    class buildCommandMenu
+    class commMenu_build
     {};
-    class callingForArsenalSupplyDrop
+    class commMenu_buildVehicleSelectPanel
     {};
-    class callingForSupplyDrop_aircraft
-    {};
-    class callingForArty
-    {};
-    class callingForCAS
-    {};
-    class callingForHelicopterCAS
-    {};
-    class callingForSupportMaster
-    {};
-    class commandMenuTree
-    {};
-    class createVehicleSelectMenu
-    {};
-    class detectControlKeys
+    class commMenu_detectControlKeys
     {
         preInit = 1;
     };
-    class getAmmoClassFromId
+    class commMenu_getSupportMap
     {};
-    class getAmmoTitleFromId
+    class commMenu_onSupportSelected
     {};
-    class getCasTitleFromId
+    class commMenu_openArsenalSupplyDrop
     {};
-    class getSupportVehicleClasses
+    class commMenu_openArty
     {};
-    class supportNotification
+    class commMenu_openCAS
     {};
-    class supportRadio
+    class commMenu_openHelicopterCAS
     {};
-    class updateFlareEffects
+    class commMenu_openSupplyDropAircraft
+    {};
+    class commMenu_openTree
+    {};
+};
+class SupportFrameworkConfigs
+{
+    file = __EVAL(KISKA_FUNCTIONS_ROOT_FOLDER + "\Functions\Support Framework\Support Config Helpers");
+    class supportConfigs_getAmmoClassFromId
+    {};
+    class supportConfigs_getAmmoTitleFromId
+    {};
+    class supportConfigs_getCasTitleFromId
+    {};
+};
+class SupportFrameworkMisc
+{
+    file = __EVAL(KISKA_FUNCTIONS_ROOT_FOLDER + "\Functions\Support Framework\Misc");
+    class supports_genericNotification
+    {};
+    class supports_genericRadioMessage
     {};
 };
 class Tasks
